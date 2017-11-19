@@ -2,10 +2,8 @@
 echo "Trying to autobuild bearparser..."
 
 #QT check
-QT_VER=`qmake -v`
 QTV="version 4."
-
-if echo "qmake-qt4 -version" | grep -q "$QTV"; then
+if echo `qmake-qt4 -version` | grep -q "$QTV"; then
     echo "[+] Qt4 found!"
 elseif echo `qmake -v` | grep -q "$QTV"; then
     echo "[+] Qt4 found!"
@@ -29,6 +27,9 @@ mkdir bearparser
 cd bearparser
 git clone https://github.com/hasherezade/bearparser.git
 echo "[+] bearparser cloned"
+cd bearparser
+git checkout qt4
+cd ..
 echo $$
 mv bearparser src
 mkdir build
